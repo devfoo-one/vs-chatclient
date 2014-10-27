@@ -1,10 +1,13 @@
 package UDPClient;
 
+import UDPClient.util.Utils;
+
 /**
  * message for the chat-client
  * structure:
  * 4 bytes message number
  * 8 bytes username
+ * xxx bytes message
  */
 public class Message {
     public final String username;
@@ -17,9 +20,7 @@ public class Message {
      * @param message  message text
      */
     public Message(final String username, String message) {
-        if (username == null) {
-            throw new IllegalArgumentException("username must not be null");
-        }
+        Utils.checkIfParamIsNull(username, "username");
         if (message == null) {
             message = "";
         }
@@ -33,12 +34,23 @@ public class Message {
 
         if (message.length() > 138) {
             this.message = message.substring(0, 137);
-
         } else {
             this.message = message;
         }
-
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Message)) return false;
+        Message message1 = (Message) o;
+        return message.equals(message1.message) && username.equals(message1.username);
+    }
 
+    @Override
+    public int hashCode() {
+        int result = username.hashCode();
+        result = 31 * result + message.hashCode();
+        return result;
+    }
 }

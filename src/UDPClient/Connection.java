@@ -34,16 +34,6 @@ public class Connection {
         this.port = port;
     }
 
-    /**
-     * returns the socket
-     *
-     * @return socket for this connection
-     */
-    @SuppressWarnings("UnusedDeclaration")
-    private DatagramSocket getSocket() {
-        return socket;
-    }
-
     public DatagramPacket getPackage(final Message mObj) {
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
         final DataOutputStream dout = new DataOutputStream(out);

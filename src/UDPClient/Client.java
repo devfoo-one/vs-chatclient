@@ -6,7 +6,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- * Client class
+ * Client main class
  */
 public class Client {
     public static void main(final String[] args) {

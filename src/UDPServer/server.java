@@ -1,9 +1,9 @@
-package server;
+package UDPServer;
 
 /**
- * server class
+ * Server class
  */
-public class server {
+public class Server {
     public static void main(final String[] args) {
         System.out.println("server...");
     }

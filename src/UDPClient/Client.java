@@ -37,6 +37,7 @@ public class Client {
         while (true) {
             final String messageText = Console.readLine("enter message: ");
             if (messageText.toLowerCase().equals("/quit")) {
+                System.out.println("quitting...");
                 System.exit(0);
             }
             final Message msg = new Message(username, messageText);

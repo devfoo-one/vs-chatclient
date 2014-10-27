@@ -1,4 +1,6 @@
-package UDPClient;
+package Chatclient.Sockets;
+
+import Chatclient.Objects.Message;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -11,7 +13,7 @@ import java.net.SocketException;
 /**
  * this class represents one connection to a given server
  */
-public class Connection {
+public class ClientSocket {
     private InetAddress IPAddress;
     private int port;
     private DatagramSocket socket;
@@ -22,7 +24,7 @@ public class Connection {
      * @param ip   IP-Address
      * @param port port
      */
-    public Connection(final InetAddress ip, final int port) {
+    public ClientSocket(final InetAddress ip, final int port) {
         try {
             this.socket = new DatagramSocket();
         } catch (SocketException e) {

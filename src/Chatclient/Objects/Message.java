@@ -1,6 +1,6 @@
-package UDPClient;
+package Chatclient.Objects;
 
-import UDPClient.util.Utils;
+import Chatclient.util.Utils;
 
 /**
  * message for the chat-client

@@ -1,4 +1,4 @@
-package UDPClient.util;
+package Chatclient.util;
 
 /**
  * general static helpers

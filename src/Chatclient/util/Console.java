@@ -1,4 +1,4 @@
-package UDPClient.util;
+package Chatclient.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;

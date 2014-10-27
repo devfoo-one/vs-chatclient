@@ -1,6 +1,8 @@
-package UDPClient;
+package Chatclient;
 
-import UDPClient.util.Console;
+import Chatclient.Objects.Message;
+import Chatclient.Sockets.ClientSocket;
+import Chatclient.util.Console;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -14,7 +16,7 @@ public class Client {
         InetAddress IPAddress = null;
         final int port;
         final String username;
-        final Connection con;
+        final ClientSocket con;
         int messageNumber = 0;
 
         System.out.println("client starting...");
@@ -31,7 +33,7 @@ public class Client {
         username = Console.readLine("enter username: ");
 
         System.out.print("trying to establish client socket...");
-        con = new Connection(IPAddress, port);
+        con = new ClientSocket(IPAddress, port);
         System.out.println("OK");
 
         //noinspection InfiniteLoopStatement

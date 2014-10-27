@@ -14,7 +14,7 @@ public class Client {
     public static void main(final String[] args) {
 
         InetAddress IPAddress = null;
-        final int port;
+        Integer port = null;
         final String username;
         final ClientSocket con;
         int messageNumber = 0;
@@ -29,18 +29,26 @@ public class Client {
                 System.out.println("could not find host!");
             }
         }
-        port = Integer.parseInt(Console.readLine("port: "));
-        username = Console.readLine("enter username: ");
 
+        while (port == null) {
+            try {
+                port = Integer.parseInt(Console.readLine("port: "));
+            } catch (NumberFormatException e) {
+                System.out.println("illegal port format!");
+            }
+        }
+
+        username = Console.readLine("enter username: ");
         System.out.print("trying to establish client socket...");
         con = new ClientSocket(IPAddress, port);
-        System.out.println("OK");
+        System.out.println(" OK (enter \"/quit\" to quit)");
 
         //noinspection InfiniteLoopStatement
         while (true) {
             final String messageText = Console.readLine("enter message: ");
             if (messageText.toLowerCase().equals("/quit")) {
                 System.out.println("quitting...");
+                con.close();
                 System.exit(0);
             }
             messageNumber++;

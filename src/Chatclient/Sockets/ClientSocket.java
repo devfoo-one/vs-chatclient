@@ -65,4 +65,8 @@ public class ClientSocket {
             e.printStackTrace();
         }
     }
+
+    public void close() {
+        this.socket.close();
+    }
 }

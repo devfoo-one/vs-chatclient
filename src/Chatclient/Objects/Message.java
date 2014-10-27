@@ -30,13 +30,13 @@ public class Message {
 
         // if username is longer than 8 chars, truncate...
         if (username.length() > 8) {
-            this.username = username.substring(0, 7);
+            this.username = username.substring(0, 8);
         } else {
             this.username = username;
         }
 
         if (message.length() > 138) {
-            this.message = message.substring(0, 137);
+            this.message = message.substring(0, 138);
         } else {
             this.message = message;
         }

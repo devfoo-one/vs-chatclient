@@ -36,6 +36,9 @@ public class Client {
         //noinspection InfiniteLoopStatement
         while (true) {
             final String messageText = Console.readLine("enter message: ");
+            if (messageText.toLowerCase().equals("/quit")) {
+                System.exit(0);
+            }
             final Message msg = new Message(username, messageText);
             con.sendMessage(msg);
         }

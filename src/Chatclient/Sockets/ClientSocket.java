@@ -25,14 +25,19 @@ public class ClientSocket {
      * @param port port
      */
     public ClientSocket(final InetAddress ip, final int port) {
+        this.IPAddress = ip;
+
         try {
             this.socket = new DatagramSocket();
         } catch (SocketException e) {
             System.err.println("could not establish client socket!");
             e.printStackTrace();
         }
-        this.IPAddress = ip;
-        this.port = port;
+        if (port < 1 || port > 65535) {
+            throw new IllegalArgumentException("port must be between 0 - 65535");
+        } else {
+            this.port = port;
+        }
     }
 
     public DatagramPacket getPackage(final Message mObj) {

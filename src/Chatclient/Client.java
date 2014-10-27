@@ -36,6 +36,10 @@ public class Client {
             } catch (NumberFormatException e) {
                 System.out.println("illegal port format!");
             }
+            if (port != null && (port < 1 || port > 65535)) {
+                System.out.println("port out of range!");
+                port = null;
+            }
         }
 
         username = Console.readLine("enter username: ");

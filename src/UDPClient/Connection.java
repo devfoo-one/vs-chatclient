@@ -15,7 +15,6 @@ public class Connection {
     private InetAddress IPAddress;
     private int port;
     private DatagramSocket socket;
-    private int messageNumber;
 
     /**
      * creates a new connection object
@@ -45,7 +44,7 @@ public class Connection {
         }
 
         try {
-            dout.writeInt(this.messageNumber);
+            dout.writeInt(mObj.messageNumber);
             dout.write(usernameFixed);
             dout.writeBytes(mObj.message);
         } catch (IOException e) {
@@ -63,6 +62,5 @@ public class Connection {
             System.err.println("could not send message!");
             e.printStackTrace();
         }
-        this.messageNumber++;
     }
 }

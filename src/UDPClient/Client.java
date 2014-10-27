@@ -15,6 +15,7 @@ public class Client {
         final int port;
         final String username;
         final Connection con;
+        int messageNumber = 0;
 
         System.out.println("client starting...");
 
@@ -40,7 +41,8 @@ public class Client {
                 System.out.println("quitting...");
                 System.exit(0);
             }
-            final Message msg = new Message(username, messageText);
+            messageNumber++;
+            final Message msg = new Message(username, messageText, messageNumber);
             con.sendMessage(msg);
         }
     }

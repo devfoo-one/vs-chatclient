@@ -12,6 +12,7 @@ import UDPClient.util.Utils;
 public class Message {
     public final String username;
     public final String message;
+    public final int messageNumber;
 
     /**
      * creates a new message object. If any Value is longer than allowed, it gets truncated.
@@ -19,7 +20,9 @@ public class Message {
      * @param username username, must not be null
      * @param message  message text
      */
-    public Message(final String username, String message) {
+    public Message(final String username, String message, final int messageNumber) {
+        this.messageNumber = messageNumber;
+
         Utils.checkIfParamIsNull(username, "username");
         if (message == null) {
             message = "";

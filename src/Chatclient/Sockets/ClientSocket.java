@@ -40,7 +40,7 @@ public class ClientSocket {
         }
     }
 
-    public DatagramPacket getPackage(final Message mObj) {
+    public DatagramPacket getPackage(final Message mObj) throws IOException {
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
         final DataOutputStream dout = new DataOutputStream(out);
 
@@ -63,8 +63,10 @@ public class ClientSocket {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        dout.flush();
         final byte[] byteArray = out.toByteArray();
+        dout.close();
+        out.close();
         return new DatagramPacket(byteArray, byteArray.length, this.IPAddress, this.port);
     }
 

@@ -1,6 +1,6 @@
 package Chatclient;
 
-import Chatclient.Objects.Message;
+import Chatclient.Objects.ReceivedMessage;
 import Chatclient.Sockets.ServerSocket;
 
 /**
@@ -16,8 +16,11 @@ public class Server {
         System.out.println("OK. listening...");
         //noinspection InfiniteLoopStatement
         while (true) {
-            final Message m = socket.receiveMessage();
-            System.out.println(m.username + "(#" + m.messageNumber + "): " + m.message);
+            final ReceivedMessage m = socket.receiveMessage();
+            System.out.println(m.IPAddress.getHostAddress() + ":" +
+                            m.port + " - " +
+                            m.username + "(#" + m.messageNumber + "): " + m.message
+            );
         }
     }
 }

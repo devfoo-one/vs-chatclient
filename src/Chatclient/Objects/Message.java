@@ -10,8 +10,17 @@ import Chatclient.util.Utils;
  * xxx bytes message
  */
 public class Message {
+    /**
+     * username fixed to 8 characters
+     */
     public final String username;
+    /**
+     * message fixed to 138 characters
+     */
     public final String message;
+    /**
+     * message number
+     */
     public final int messageNumber;
 
     /**

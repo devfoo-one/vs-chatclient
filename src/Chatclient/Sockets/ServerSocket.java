@@ -1,11 +1,12 @@
 package Chatclient.Sockets;
 
-import Chatclient.Objects.Message;
+import Chatclient.Objects.ReceivedMessage;
 
 import java.io.IOException;
 import java.math.BigInteger;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.Arrays;
 
@@ -25,7 +26,7 @@ public class ServerSocket {
         }
     }
 
-    public Message receiveMessage() {
+    public ReceivedMessage receiveMessage() {
         final byte[] receiveData = new byte[1024];
         DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
         try {
@@ -39,8 +40,9 @@ public class ServerSocket {
         final int messageNumber = new BigInteger(Arrays.copyOfRange(receiveData, 0, 4)).intValue();
         final String username = new String(Arrays.copyOfRange(receiveData, 4, 12)).trim();
         final String message = new String(Arrays.copyOfRange(receiveData, 12, receiveData.length - 1)).trim();
-
-        return new Message(username, message, messageNumber);
+        final int port = receivePacket.getPort();
+        final InetAddress IPAddress = receivePacket.getAddress();
+        return new ReceivedMessage(username, message, messageNumber, IPAddress, port);
     }
 
 }

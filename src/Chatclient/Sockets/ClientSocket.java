@@ -50,10 +50,16 @@ public class ClientSocket {
             usernameFixed[i] = (byte) mObj.username.charAt(i);
         }
 
+        // make shure that message is always 138 byte long
+        byte[] messageFixed = new byte[138];
+        for (int i = 0; i < mObj.message.length(); i++) {
+            messageFixed[i] = (byte) mObj.message.charAt(i);
+        }
+
         try {
             dout.writeInt(mObj.messageNumber);
             dout.write(usernameFixed);
-            dout.writeBytes(mObj.message);
+            dout.write(messageFixed);
         } catch (IOException e) {
             e.printStackTrace();
         }
